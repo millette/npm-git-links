@@ -2,9 +2,21 @@
   "name": "npm-git-links",
   "version": "0.0.0",
   "main": "index.js",
+  "engines": {
+    "node": ">=8.11.3"
+  },
   "license": "AGPL-3.0",
   "repository": "millette/npm-git-links",
+  "bin": "cli.js",
+  "scripts": {
+    "deps": "standard && dependency-check . && dependency-check . --unused --no-dev",
+    "lint": "standard"
+  },
   "dependencies": {
     "hosted-git-info": "^2.7.1"
+  },
+  "devDependencies": {
+    "dependency-check": "^3.2.0",
+    "standard": "^11.0.1"
   }
 }
