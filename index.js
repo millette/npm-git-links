@@ -53,10 +53,4 @@ class Doit {
   }
 }
 
-console.log('RET:', ret)
-
-const x = new Doit(ret.repository, ret.headHash)
-console.log(x.browse)
-
-x.clearVersion()
-console.log(x.browse)
+module.exports = { ret, Doit }
