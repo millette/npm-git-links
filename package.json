@@ -8,6 +8,11 @@
   "license": "AGPL-3.0",
   "repository": "millette/npm-git-links",
   "bin": "cli.js",
+  "browser": {
+    "hosted-git-info": false,
+    "path": false,
+    "fs": false
+  },
   "scripts": {
     "deps": "standard && dependency-check . && dependency-check . --unused --no-dev",
     "lint": "standard"
