@@ -11,16 +11,18 @@ if (typeof window === 'undefined') {
   // npm
   const { readFileSync } = require('fs')
   try {
-    ret.versionHash = readFileSync(`.git/refs/tags/${versionTag}`, 'utf-8').trim()
     ret.headHash = readFileSync(
       `.git/${readFileSync('.git/HEAD', 'utf-8')
         .slice(5)
         .trim()}`,
       'utf-8'
     ).trim()
+    ret.versionHash = readFileSync(`.git/refs/tags/${versionTag}`, 'utf-8').trim()
     ret.dev = ret.versionHash !== ret.headHash
   } catch (e) {
-    // nop
+    if (!ret.versionHash) {
+      delete ret.versionTag
+    }
   }
 }
 
@@ -53,7 +55,7 @@ class Doit {
 
 console.log('RET:', ret)
 
-const x = new Doit(ret.repository, ret.versionTag)
+const x = new Doit(ret.repository, ret.headHash)
 console.log(x.browse)
 
 x.clearVersion()
