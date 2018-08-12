@@ -4,7 +4,7 @@ if (typeof window !== 'undefined') {
   throw new Error('Browser not supported')
   /*
   module.exports = {
-    ret: {},
+    localRet: {},
     Doit: DoitImp = () => { throw new Error('Browser not supported') }
   }
   return
@@ -17,11 +17,6 @@ const { fromUrl } = require('hosted-git-info')
 // core
 const { readFileSync } = require('fs')
 const resolveCwd = require('path').resolve.bind(null, process.cwd())
-
-// self
-const { name, version, repository } = require(resolveCwd('package.json'))
-const versionTag = `v${version}`
-const ret = { name, version, versionTag, repository }
 
 class Doit {
   constructor (u, v) {
@@ -50,19 +45,27 @@ class Doit {
   }
 }
 
+let ret
+
 try {
+  const { name, version, repository } = JSON.parse(readFileSync(resolveCwd('package.json'), 'utf-8'))
+  const versionTag = `v${version}`
+  const localRet = { name, version, versionTag, repository }
+  ret = localRet
+
   const p1 = resolveCwd('.git/HEAD')
   const p2 = resolveCwd(
       `.git/${readFileSync(p1, 'utf-8')
         .slice(5)
         .trim()}`
   )
-  ret.headHash = readFileSync(p2, 'utf-8').trim()
+  localRet.headHash = readFileSync(p2, 'utf-8').trim()
   const p3 = resolveCwd('.git/refs/tags', versionTag)
 
-  ret.versionHash = readFileSync(p3, 'utf-8').trim()
-  ret.dev = ret.versionHash !== ret.headHash
+  localRet.versionHash = readFileSync(p3, 'utf-8').trim()
+  localRet.dev = localRet.versionHash !== localRet.headHash
 } catch (e) {
+  if (!ret) { throw e }
   if (!ret.versionHash) {
     delete ret.versionTag
   }
