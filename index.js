@@ -55,9 +55,9 @@ try {
 
   const p1 = resolveCwd('.git/HEAD')
   const p2 = resolveCwd(
-      `.git/${readFileSync(p1, 'utf-8')
-        .slice(5)
-        .trim()}`
+    `.git/${readFileSync(p1, 'utf-8')
+      .slice(5)
+      .trim()}`
   )
   localRet.headHash = readFileSync(p2, 'utf-8').trim()
   const p3 = resolveCwd('.git/refs/tags', versionTag)
