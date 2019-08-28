@@ -14,14 +14,14 @@
     "fs": false
   },
   "scripts": {
-    "deps": "standard && dependency-check . && dependency-check . --unused --no-dev",
+    "deps": "standard && dependency-check . --no-dev",
     "test": "standard"
   },
   "dependencies": {
     "hosted-git-info": "^2.7.1"
   },
   "devDependencies": {
-    "dependency-check": "^3.4.1",
+    "dependency-check": "^4.1.0",
     "standard": "^14.0.2"
   }
 }
