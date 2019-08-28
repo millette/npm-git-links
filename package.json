@@ -15,13 +15,13 @@
   },
   "scripts": {
     "deps": "standard && dependency-check . && dependency-check . --unused --no-dev",
-    "lint": "standard"
+    "test": "standard"
   },
   "dependencies": {
     "hosted-git-info": "^2.7.1"
   },
   "devDependencies": {
     "dependency-check": "^3.4.1",
-    "standard": "^13.0.1"
+    "standard": "^14.0.2"
   }
 }
