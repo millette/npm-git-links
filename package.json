@@ -18,7 +18,7 @@
     "test": "standard"
   },
   "dependencies": {
-    "hosted-git-info": "^3.0.0"
+    "hosted-git-info": "^3.0.4"
   },
   "devDependencies": {
     "dependency-check": "^4.1.0",
