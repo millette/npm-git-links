@@ -24,6 +24,10 @@ class Doit {
     this.version = v
   }
 
+  get version () {
+    return this._version
+  }
+
   set version (v) {
     this._version = v
     const u = v ? `${this._u}#${v}` : this._u

@@ -18,10 +18,10 @@
     "test": "standard"
   },
   "dependencies": {
-    "hosted-git-info": "^3.0.4"
+    "hosted-git-info": "^4.0.2"
   },
   "devDependencies": {
     "dependency-check": "^4.1.0",
-    "standard": "^14.3.1"
+    "standard": "^16.0.3"
   }
 }
